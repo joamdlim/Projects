@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        
+        .expenseCard {
+            margin-top: 20px;
+            padding: 10px;
+        }
+        #incomeTotal{
+            float: right;
+        }
+        #expenseTotal{
+            float: right;
+        }
+        #balance{
+            float: right;
+        }
+        input[type='number']{
+            width: 295px;
+        } 
+    </style>
+  </head>
+  <body>
+    <h1>Expense Tracker</h1>
+    <h3><span id="error" style="color: red;"></span></h3>
+    <form>
+        <div>
+      <label for="name">Name</label>
+        </div>
+      <input type="text" id="name" name="name" size="38"><br><br>
+      <div>
+      <label for="price">Price</label>
+    </div>
+      <input type="number" id="price" name="price" ><br><br>
+      <label for="type">Type</label>
+      <div>
+        <input type="radio" id="expense" name="type" value="expense">
+        <label for="expense">Expense</label>
+      <input type="radio" id="income" name="type" value="income">
+      <label for="income">Income</label>
+    </div>
+    <h2></h2>
+    <div style="display: flex; justify-content: center;">
+        <input type="button" value="Reset" onclick="resetForm()" style="margin-right: 10px;">
+        <input type="button" value="Add" onclick="addItem()">
+      </div>
+      <span id="error" style="color: red;"></span>
+   </div>
+    </form>
+    <h2></h2>
+    <h2>INCOME <span id="incomeTotal">0</span></h2>
+    <h2>EXPENSES <span id="expenseTotal">0</span></h2>
+    <h2>BALANCE <span id="balance">0</span></h2>
+    
+    <div id="expenseCard"></div>
+    <script>
+      let incomeTotal = 0;
+      let expenseTotal = 0;
+      let balance = 0;
+      let expenseCard = document.getElementById("expenseCard");
+
+      function addItem() {
+  const name = document.getElementById("name").value;
+  const price = Number(document.getElementById("price").value);
+  const type = document.querySelector('input[name="type"]:checked');
+
+  // validate form
+  let errors = [];
+  if (name === "") {
+    errors.push("Name should not be blank");
+  }
+  if (price <= 0 || isNaN(price)) {
+    errors.push("Numbers should not be blank or less than 0");
+  }
+  if (!type) {
+    errors.push("Please choose a type");
+  }
+  if (errors.length > 0) {
+    const errorList = document.createElement("ul");
+    for (let i = 0; i < errors.length; i++) {
+      const errorItem = document.createElement("li");
+      errorItem.textContent = errors[i];
+      errorList.appendChild(errorItem);
+    }
+    document.getElementById("error").innerHTML = "";
+    document.getElementById("error").appendChild(errorList);
+    return;
+  }
+  document.getElementById("error").innerHTML = "";
+ 
+
+  // create expense item and add to expense card
+  const item = document.createElement("div");
+  item.textContent = name + " - ₱" + price;
+  if (type.value === "expense") {
+    item.style.backgroundColor = "indianred";
+    item.style.borderRadius = "10px";
+    item.style.height = "50px";
+    item.style.textAlign = "center";
+    item.style.paddingTop = "20px";
+    item.style.fontSize = "20pt";
+    item.style.marginTop = "5px";
+    expenseTotal += price;
+    document.getElementById("expenseTotal").textContent = expenseTotal;
+  } else {
+    item.style.backgroundColor = "lightgreen";
+    item.style.borderRadius = "10px";
+    item.style.height = "50px";
+    item.style.textAlign = "center";
+    item.style.paddingTop = "20px"
+    item.style.fontSize = "20pt";
+    item.style.marginTop = "5px";
+    incomeTotal += price;
+    document.getElementById("incomeTotal").textContent = incomeTotal;
+  }
+  expenseCard.appendChild(item);
+
+  // update balance
+  balance = incomeTotal - expenseTotal;
+  document.getElementById("balance").textContent = balance;
+}
+
+
+      function resetForm() {
+        document.getElementById("name").value = "";
+        document.getElementById("price").value = "";
+        document.querySelector('input[name="type"]:checked').checked = false;
+        document.getElementById("error").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
