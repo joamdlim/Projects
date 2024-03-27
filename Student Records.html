@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+            
+            th {
+                background-color: #008CBA;
+                color: white;
+            }
+            
+
+            input[type="text"], input[type="number"], select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            
+            input[type="submit"], button {
+                background-color: #008CBA;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            
+            input[type="submit"]:hover, button:hover {
+                background-color: #45a049;
+            }
+            
+            #delete-person-name {
+                width: 80%;
+            }
+            
+            .delete-button {
+                background-color: #f44336;
+            }
+            h3 {
+        text-align: center;
+      }
+        </style>
+    </head>
+    <body onload="initializePersons()">
+        <h3>Student Records</h3>
+        <input type="text" id="name" placeholder="Name">
+        <input type="number" id="year" placeholder="Year">
+        <select id="course">
+            <option value="">--Select course--</option>
+            <option value="CS">Bachelor of Science in Computer Science</option>
+            <option value="IT">Bachelor of Science in Information Technology</option>
+            <option value="DS">Bachelor of Science in Data Science</option>
+            <option value="IS">Bachelor of Science in Information System</option>
+        </select>
+        <select id="gender">
+            <option value="">--Select gender--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input type="text" id="grade" placeholder="Grade">
+        <a class="waves-effect waves-light btn" onclick="addPerson()">Submit</a>
+ 
+
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Course</th>
+                    <th>Gender</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+        <script src="final.js"></script>
+        <h3>Search Student Records</h3>
+<div class="row">
+  <div class="input-field col s3">
+    <input id="search" type="text" class="validate">
+    <label for="search">Search Name</label>
+  </div>
+  <div class="input-field col s3">
+    <div>Year</div>
+    <p>
+      <label>
+        <input name="year-option" type="radio" />
+        <span>1</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="year-option" type="radio" />
+        <span>2</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="year-option" type="radio" />
+        <span>3</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="year-option" type="radio" />
+        <span>4</span>
+      </label>
+    </p>
+  </div>
+  <div class="input-field col s3">
+    <div>Course</div>
+    <p>
+      <label>
+        <input name="course-option" type="radio" />
+        <span>Bachelor of Science in Computer Science</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="course-option" type="radio" />
+        <span>Bachelor of Science in Information Technology</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="course-option" type="radio" />
+        <span>Bachelor of Science in Data Science</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="course-option" type="radio" />
+        <span>Bachelor of Science in Information System</span>
+      </label>
+    </p>
+  </div>
+  <div class="input-field col s3">
+    <div>Gender</div>
+    <p>
+      <label>
+        <input name="gender-option" type="radio" />
+        <span>Male</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="gender-option" type="radio" />
+        <span>Female</span>
+      </label>
+    </p>
+  </div>
+</div>
+<div class="center-align">
+  <button class="btn waves-effect waves-light" type="Search" name="action">Search</button>
+</div>
+
+    </body>
+</html>
