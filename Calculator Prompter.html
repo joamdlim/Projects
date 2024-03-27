@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calculator</title>
+</head>
+<body> 
+  <h3 id = "text">
+    
+  </h3>
+      <script>
+        const x = document.getElementById("text")
+        var operation = prompt("Operation to perform? (1) + (2) - (3) * (4) /");
+        if (operation <= 4){
+        if (operation != null){
+          var num1 = (prompt("Enter First Number (default is zero):", "0"));
+          if (num1 != null){
+        var num2 = (prompt("Enter Second Number (default is zero):", "0"));
+        if (num2 != null){
+        var num1 = parseInt(num1);
+        var num2 = parseInt(num2);
+        var result;
+        
+            
+                
+        if (operation == "1") {
+          result = num1 + num2;
+          x.innerHTML = num1 + " plus " + num2 + " is " + result;
+        } else if (operation == "2") {
+          result = num1 - num2;
+          x.innerHTML = num1 + " minus " + num2 + " is " + result;
+        } else if (operation == "3") {
+          result = num1 * num2;
+          x.innerHTML = num1 + " times " + num2 + " is " + result;
+        } else if (operation == "4") {
+          result = Math.floor(num1 / num2);
+          remainder = num1 % num2;
+          x.innerHTML = num1 + " divided by " + num2 + " is " + result + " remainder " + remainder;
+        }  
+        else {
+          x.innerHTML = "Invalid Operation";
+        } 
+
+}
+        else {
+        x.innerHTML = "You pressed Cancel";
+    }
+}
+        else {
+        x.innerHTML = "You pressed Cancel";
+    }
+        }
+        else {
+        x.innerHTML = "You pressed Cancel";
+    }
+    
+        } else {
+          x.innerHTML= "Invalid Operation";
+        }
+        
+
+
+ 
+      </script>
+<h3>
+  
+</h3>
+
+  
+</body>
+</html>
